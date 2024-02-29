@@ -73,14 +73,51 @@ public class LinkedList<Data> implements Iterable<Data> {
         return current.data;													// 5
     }
 
-    /* Add an element to a linked list by index (0-index) */
     public void add(int index, Data data) {
-        // your code
+        if (index < 0 || index > size) {                                            // 1
+            throw new IndexOutOfBoundsException("Invalid index for insertion.");    // 1
+        }
+
+        if (index == 0) {                                                           // 2
+            addToFront(data);                                                        // 2
+        } else if (index == size) {                                                  // 3
+            addToRear(data);                                                         // 3
+        } else {                                                                     // 4
+            Node<Data> newNode = new Node<>();                                       // 4
+            newNode.data = data;                                                     // 4
+
+            Node<Data> current = head;                                               // 5
+            for (int i = 0; i < index - 1; i++) {                                    // 5
+                current = current.next;                                               // 5
+            }                                                                         // 5
+
+            newNode.next = current.next;                                             // 6
+            current.next = newNode;                                                   // 7
+
+            size++;                                                                   // 8
+        }
     }
 
-    /* Delete an element from a linked list by index (0-index) */
     public void remove(int index) {
-        // your code
+        if(size == 0){
+            throw new IndexOutOfBoundsException("Invalid linked list node.");
+        }else if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Invalid index for removal.");
+        }
+
+        if (index == 0) {
+            removeFromFront();
+        } else if (index == size - 1){
+            removeFromRear();                                                                  // 6
+        } else{
+            Node<Data> current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            current.next = current.next.next;
+
+            size--;
+        }
     }
 
     public void reverse() {
