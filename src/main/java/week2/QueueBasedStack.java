@@ -5,30 +5,34 @@ public class QueueBasedStack<Data> {
     private Queue<Data> q2;
 
     public QueueBasedStack() {
-        // your code here
+        q2 = new Queue<>();
+        q1 = new Queue<>();
     }
 
     public void push(Data data) {
-        // your code here
+        q2.enqueue(data);
+        while(!q1.isEmpty()){
+            q2.enqueue(q1.dequeue());
+        }
+        while(!q2.isEmpty()){
+            q1.enqueue(q2.dequeue());
+        }
+
     }
 
     public Data pop() {
-        // your code here (remove next line)
-        return null;
+        return q1.dequeue();
     }
 
     public Data peek() {
-        // your code here (remove next line)
-        return null;
+        return q1.peek();
     }
 
     public int size() {
-        // your code here (remove next line)
-        return 0;
+        return q1.size();
     }
 
     public boolean isEmpty() {
-        // your code here (remove next line)
-        return false;
+        return q1.isEmpty();
     }
 }
