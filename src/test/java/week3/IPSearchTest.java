@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class IPSearchTest {
     // IMPORTANT: DO NOT commit the entire CSV file; add it to .gitignore or keep it outside the repository.
-    public static String filePath = "replace with path to your CSV";
+    public static String filePath = "C:/Users/User/IdeaProjects/DSA_Practice/assets/IP2LOCATION.csv";
     public static IPAddress[] ipAddresses;
 
     @BeforeAll
