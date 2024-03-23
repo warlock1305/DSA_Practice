@@ -95,6 +95,13 @@ public class LinkedList<Data> implements Iterable<Data> {
             current.next = newNode;                                                   // 7
 
             size++;                                                                   // 8
+        if (index == 0) {
+            addToFront(data);
+        } else if (index == size) {
+            addToRear(data);
+        } else {
+
+
         }
     }
 
